@@ -75,12 +75,12 @@ public class ReviewRepositoryImpl implements ReviewRepository {
 				" UPDATE" +
 				" t_review" +
 				" SET       " +
-				" user_id = ?" +
-				" visit_date = ?" +
-				" rating = ?" +
+				" user_id = ?," +
+				" visit_date = ?," +
+				" rating = ?," +
 				" comment = ?" +
-				" Where = ?" +
-				" review_id = ?" ;
+				" WHERE" +
+				" review_id = ? " ;
 		
 		jdbcTemplate.update(sql,
 				review.getUserId(),
