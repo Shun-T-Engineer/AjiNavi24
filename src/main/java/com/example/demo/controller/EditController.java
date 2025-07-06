@@ -9,13 +9,15 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.entity.Review;
 import com.example.demo.form.ReviewEditForm;
+import com.example.demo.service.EditService;
 
 import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
 public class EditController {
-
+	
+	private final EditService service;
 
 	@PostMapping("/show-edit-form")
 	public String showEditForm(@ModelAttribute ReviewEditForm form) {
@@ -53,8 +55,8 @@ public class EditController {
 		r.setRating(form.getRating());
 		r.setComment(form.getComment());
 		
-		System.out.println("レビュー更新");
-		System.out.println(r);
+
+		service.edit(r);
 		
 		redirectAttributes.addFlashAttribute("msg", "レビュー更新");
 		
